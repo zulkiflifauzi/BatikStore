@@ -4,45 +4,45 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BatikStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="BatikStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BatikStoreModelStoreContainer">
-          <EntitySet Name="Model" EntityType="BatikStoreModel.Store.Model" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Origin" EntityType="BatikStoreModel.Store.Origin" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Product" EntityType="BatikStoreModel.Store.Product" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Size" EntityType="BatikStoreModel.Store.Size" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Type" EntityType="BatikStoreModel.Store.Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Models" EntityType="BatikStoreModel.Store.Models" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Origins" EntityType="BatikStoreModel.Store.Origins" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="BatikStoreModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sizes" EntityType="BatikStoreModel.Store.Sizes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Types" EntityType="BatikStoreModel.Store.Types" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Product_Model" Association="BatikStoreModel.Store.FK_Product_Model">
-            <End Role="Model" EntitySet="Model" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Origin" Association="BatikStoreModel.Store.FK_Product_Origin">
-            <End Role="Origin" EntitySet="Origin" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Origins" EntitySet="Origins" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Size" Association="BatikStoreModel.Store.FK_Product_Size">
-            <End Role="Size" EntitySet="Size" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Sizes" EntitySet="Sizes" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Type" Association="BatikStoreModel.Store.FK_Product_Type">
-            <End Role="Type" EntitySet="Type" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Model">
+        <EntityType Name="Models">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Origin">
+        <EntityType Name="Origins">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="Products">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -54,14 +54,14 @@
           <Property Name="Type_TypeId" Type="int" />
           <Property Name="Model_ModelId" Type="int" />
         </EntityType>
-        <EntityType Name="Size">
+        <EntityType Name="Sizes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Type">
+        <EntityType Name="Types">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -69,55 +69,54 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Product_Model">
-          <End Role="Model" Type="BatikStoreModel.Store.Model" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Store.Product" Multiplicity="*" />
+          <End Role="Models" Type="BatikStoreModel.Store.Models" Multiplicity="0..1" />
+          <End Role="Products" Type="BatikStoreModel.Store.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Model">
+            <Principal Role="Models">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
+            <Dependent Role="Products">
               <PropertyRef Name="Model_ModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Origin">
-          <End Role="Origin" Type="BatikStoreModel.Store.Origin" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Store.Product" Multiplicity="*" />
+          <End Role="Origins" Type="BatikStoreModel.Store.Origins" Multiplicity="0..1" />
+          <End Role="Products" Type="BatikStoreModel.Store.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Origin">
+            <Principal Role="Origins">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
+            <Dependent Role="Products">
               <PropertyRef Name="Origin_OriginId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Size">
-          <End Role="Size" Type="BatikStoreModel.Store.Size" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Store.Product" Multiplicity="*" />
+          <End Role="Sizes" Type="BatikStoreModel.Store.Sizes" Multiplicity="0..1" />
+          <End Role="Products" Type="BatikStoreModel.Store.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Size">
+            <Principal Role="Sizes">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
+            <Dependent Role="Products">
               <PropertyRef Name="Size_SizeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Type">
-          <End Role="Type" Type="BatikStoreModel.Store.Type" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Store.Product" Multiplicity="*" />
+          <End Role="Types" Type="BatikStoreModel.Store.Types" Multiplicity="0..1" />
+          <End Role="Products" Type="BatikStoreModel.Store.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Type">
+            <Principal Role="Types">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
+            <Dependent Role="Products">
               <PropertyRef Name="Type_TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BatikStoreModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -148,29 +147,29 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="BatikStoreModel.FK_Product_Model" FromRole="Model" ToRole="Product" />
         </EntityType>
         <EntityType Name="Origin">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="BatikStoreModel.FK_Product_Origin" FromRole="Origin" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Size_SizeId" Type="Int32" />
-          <Property Name="Origin_OriginId" Type="Int32" />
-          <Property Name="Type_TypeId" Type="Int32" />
-          <Property Name="Model_ModelId" Type="Int32" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Size_SizeId" />
+          <Property Type="Int32" Name="Origin_OriginId" />
+          <Property Type="Int32" Name="Type_TypeId" />
+          <Property Type="Int32" Name="Model_ModelId" />
           <NavigationProperty Name="Model" Relationship="BatikStoreModel.FK_Product_Model" FromRole="Product" ToRole="Model" />
           <NavigationProperty Name="Origin" Relationship="BatikStoreModel.FK_Product_Origin" FromRole="Product" ToRole="Origin" />
           <NavigationProperty Name="Size" Relationship="BatikStoreModel.FK_Product_Size" FromRole="Product" ToRole="Size" />
@@ -180,21 +179,21 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="BatikStoreModel.FK_Product_Size" FromRole="Size" ToRole="Product" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="BatikStoreModel.FK_Product_Type" FromRole="Type" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Product_Model">
-          <End Role="Model" Type="BatikStoreModel.Model" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Product" Multiplicity="*" />
+          <End Type="BatikStoreModel.Model" Role="Model" Multiplicity="0..1" />
+          <End Type="BatikStoreModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Model">
               <PropertyRef Name="Id" />
@@ -205,8 +204,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Origin">
-          <End Role="Origin" Type="BatikStoreModel.Origin" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Product" Multiplicity="*" />
+          <End Type="BatikStoreModel.Origin" Role="Origin" Multiplicity="0..1" />
+          <End Type="BatikStoreModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Origin">
               <PropertyRef Name="Id" />
@@ -217,8 +216,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Size">
-          <End Role="Size" Type="BatikStoreModel.Size" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Product" Multiplicity="*" />
+          <End Type="BatikStoreModel.Size" Role="Size" Multiplicity="0..1" />
+          <End Type="BatikStoreModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Size">
               <PropertyRef Name="Id" />
@@ -229,8 +228,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Type">
-          <End Role="Type" Type="BatikStoreModel.Type" Multiplicity="0..1" />
-          <End Role="Product" Type="BatikStoreModel.Product" Multiplicity="*" />
+          <End Type="BatikStoreModel.Type" Role="Type" Multiplicity="0..1" />
+          <End Type="BatikStoreModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="Id" />
@@ -240,37 +239,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BatikStoreModelStoreContainer" CdmEntityContainer="BatikStoreEntities">
-          <EntitySetMapping Name="Models"><EntityTypeMapping TypeName="BatikStoreModel.Model"><MappingFragment StoreEntitySet="Model">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Origins"><EntityTypeMapping TypeName="BatikStoreModel.Origin"><MappingFragment StoreEntitySet="Origin">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Products"><EntityTypeMapping TypeName="BatikStoreModel.Product"><MappingFragment StoreEntitySet="Product">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Number" ColumnName="Number" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="Size_SizeId" ColumnName="Size_SizeId" />
-            <ScalarProperty Name="Origin_OriginId" ColumnName="Origin_OriginId" />
-            <ScalarProperty Name="Type_TypeId" ColumnName="Type_TypeId" />
-            <ScalarProperty Name="Model_ModelId" ColumnName="Model_ModelId" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Sizes"><EntityTypeMapping TypeName="BatikStoreModel.Size"><MappingFragment StoreEntitySet="Size">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Types"><EntityTypeMapping TypeName="BatikStoreModel.Type"><MappingFragment StoreEntitySet="Type">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="BatikStoreModel.Model">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Origins">
+            <EntityTypeMapping TypeName="BatikStoreModel.Origin">
+              <MappingFragment StoreEntitySet="Origins">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="BatikStoreModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Model_ModelId" ColumnName="Model_ModelId" />
+                <ScalarProperty Name="Type_TypeId" ColumnName="Type_TypeId" />
+                <ScalarProperty Name="Origin_OriginId" ColumnName="Origin_OriginId" />
+                <ScalarProperty Name="Size_SizeId" ColumnName="Size_SizeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sizes">
+            <EntityTypeMapping TypeName="BatikStoreModel.Size">
+              <MappingFragment StoreEntitySet="Sizes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="BatikStoreModel.Type">
+              <MappingFragment StoreEntitySet="Types">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -292,28 +311,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BatikStore">
-        <EntityTypeShape EntityType="BatikStoreModel.Model" Width="1.5" PointX="0.75" PointY="1.75" Height="1.5956835937500002" IsExpanded="true" />
-        <EntityTypeShape EntityType="BatikStoreModel.Origin" Width="1.5" PointX="0.75" PointY="4.875" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BatikStoreModel.Product" Width="1.5" PointX="3" PointY="1" Height="3.1340950520833313" IsExpanded="true" />
-        <EntityTypeShape EntityType="BatikStoreModel.Size" Width="1.5" PointX="0.75" PointY="7.25" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BatikStoreModel.Type" Width="1.5" PointX="0.75" PointY="9.625" Height="1.5956835937499996" IsExpanded="true" />
-        <AssociationConnector Association="BatikStoreModel.FK_Product_Model" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.5478417968750002" />
-          <ConnectorPoint PointX="3" PointY="2.5478417968750002" />
+        <EntityTypeShape EntityType="BatikStoreModel.Model" Width="1.5" PointX="0.75" PointY="1.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BatikStoreModel.Origin" Width="1.5" PointX="0.75" PointY="4.875" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BatikStoreModel.Product" Width="1.5" PointX="3" PointY="1" Height="3.1340950520833313" />
+        <EntityTypeShape EntityType="BatikStoreModel.Size" Width="1.5" PointX="0.75" PointY="7.25" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BatikStoreModel.Type" Width="1.5" PointX="0.75" PointY="9.625" Height="1.5956835937499996" />
+        <AssociationConnector Association="BatikStoreModel.FK_Product_Model" >
+          <ConnectorPoint PointX="2.25" PointY="2.547841796875" />
+          <ConnectorPoint PointX="3" PointY="2.547841796875" />
         </AssociationConnector>
-        <AssociationConnector Association="BatikStoreModel.FK_Product_Origin" ManuallyRouted="false">
+        <AssociationConnector Association="BatikStoreModel.FK_Product_Origin" >
           <ConnectorPoint PointX="2.25" PointY="5.672841796875" />
           <ConnectorPoint PointX="3.2604141666666666" PointY="5.6728417968749989" />
           <ConnectorPoint PointX="3.4270808333333336" PointY="5.672841796875" />
           <ConnectorPoint PointX="3.75" PointY="5.672841796875" />
           <ConnectorPoint PointX="3.75" PointY="4.1340950520833317" />
         </AssociationConnector>
-        <AssociationConnector Association="BatikStoreModel.FK_Product_Size" ManuallyRouted="false">
+        <AssociationConnector Association="BatikStoreModel.FK_Product_Size" >
           <ConnectorPoint PointX="2.25" PointY="8.047841796875" />
           <ConnectorPoint PointX="3.3437475" PointY="8.047841796875" />
           <ConnectorPoint PointX="3.3437475" PointY="4.1340950520833317" />
         </AssociationConnector>
-        <AssociationConnector Association="BatikStoreModel.FK_Product_Type" ManuallyRouted="false">
+        <AssociationConnector Association="BatikStoreModel.FK_Product_Type" >
           <ConnectorPoint PointX="2.25" PointY="10.422841796875" />
           <ConnectorPoint PointX="4.1562525" PointY="10.422841796875" />
           <ConnectorPoint PointX="4.1562525" PointY="4.1340950520833317" />

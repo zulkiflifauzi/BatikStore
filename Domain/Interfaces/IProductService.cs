@@ -9,5 +9,6 @@ namespace Domain.Interfaces
     public interface IProductService
     {
         List<Product> GetAll();
+        bool IsModelAlreadyUsed(int modelId);
     }
 }

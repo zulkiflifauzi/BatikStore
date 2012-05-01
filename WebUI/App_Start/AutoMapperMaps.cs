@@ -16,7 +16,12 @@ namespace WebUI.App_Start
         /// </summary>
         public static void Start()
         {
-            Mapper.CreateMap<Product, ViewModelProduct>();
+            Mapper.CreateMap<Product, ViewModelProduct>()
+                .ForMember(dest => dest.ModelName, opt => opt.MapFrom(src => src.Model != null ? src.Model.Name : string.Empty));
+            Mapper.CreateMap<ViewModelProduct, Product>();
+
+            Mapper.CreateMap<Model, ViewModelModel>();
+            Mapper.CreateMap<ViewModelModel, Model>();
         }
 
         /// <summary>

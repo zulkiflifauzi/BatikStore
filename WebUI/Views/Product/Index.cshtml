@@ -19,16 +19,16 @@
             Description
         </th>
         <th>
-            Zone_ZoneId
+            Size
         </th>
         <th>
-            Model_ModelId
+            Model
         </th>
         <th>
-            Type_TypeId
+            Type
         </th>
         <th>
-            Origin_OriginId
+            Origin
         </th>
         <th></th>
     </tr>
@@ -42,16 +42,16 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Zone_ZoneId)
+            @Html.DisplayFor(modelItem => item.SizeName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Model_ModelId)
+            @Html.DisplayFor(modelItem => item.ModelName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type_TypeId)
+            @Html.DisplayFor(modelItem => item.TypeName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Origin_OriginId)
+            @Html.DisplayFor(modelItem => item.OriginName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

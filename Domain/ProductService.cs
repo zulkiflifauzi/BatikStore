@@ -18,9 +18,15 @@ namespace Domain
         {
             _productRepository = productRepository;
         }
+
         public List<Product> GetAll()
         {
             return _productRepository.GetAll();
+        }
+
+        public bool IsModelAlreadyUsed(int modelId)
+        {
+            return _productRepository.IsModelAlreadyUsed(modelId);
         }
     }
 }

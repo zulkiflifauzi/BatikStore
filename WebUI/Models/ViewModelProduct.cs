@@ -14,12 +14,20 @@ namespace WebUI.Models
 
         public string Description { get; set; }
 
-        public int Zone_ZoneId { get; set; }
+        public int Size_SizeId { get; set; }
 
         public int Model_ModelId { get; set; }
 
         public int Type_TypeId { get; set; }
 
         public int Origin_OriginId { get; set; }
+
+        public string SizeName { get; set; }
+
+        public string ModelName { get; set; }
+
+        public string TypeName { get; set; }
+
+        public string OriginName { get; set; }
     }
 }

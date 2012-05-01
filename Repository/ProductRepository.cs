@@ -12,9 +12,17 @@ namespace Repository
         {
             using (var db = new BatikStoreEntities())
             {
-                return db.Products.ToList();
+                return db.Products.Include("Model").ToList();
             }
-        }       
+        }
+
+        public bool IsModelAlreadyUsed(int modelId)
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                return db.Products.Any(c => c.Model_ModelId == modelId);
+            }
+        }
 
         public void Add(Product entity)
         {
@@ -26,7 +34,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        public void Delete(Product entity)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

@@ -59,6 +59,9 @@ namespace WebUI.App_Start
         {
             kernel.Bind<IProductService>().To<ProductService>();
             kernel.Bind<IProductRepository>().To<ProductRepository>();
+
+            kernel.Bind<IModelService>().To<ModelService>();
+            kernel.Bind<IModelRepository>().To<ModelRepository>();
         }        
     }
 }

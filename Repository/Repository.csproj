@@ -49,7 +49,9 @@
       <DependentUpon>BatikStore.edmx</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICRUDRepository.cs" />
+    <Compile Include="Interfaces\IModelRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="ModelRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +60,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BatikStore.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
