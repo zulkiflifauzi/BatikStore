@@ -22,6 +22,12 @@ namespace WebUI.App_Start
 
             Mapper.CreateMap<Model, ViewModelModel>();
             Mapper.CreateMap<ViewModelModel, Model>();
+
+            Mapper.CreateMap<Origin, ViewModelOrigin>();
+            Mapper.CreateMap<ViewModelOrigin, Origin>();
+
+            Mapper.CreateMap<Type, ViewModelType>();
+            Mapper.CreateMap<ViewModelType, Type>();
         }
 
         /// <summary>

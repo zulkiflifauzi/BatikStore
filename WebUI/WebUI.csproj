@@ -89,11 +89,15 @@
     <Compile Include="App_Start\AutoMapperMaps.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
+    <Compile Include="Controllers\OriginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModelType.cs" />
+    <Compile Include="Models\ViewModelOrigin.cs" />
     <Compile Include="Models\ViewModelModel.cs" />
     <Compile Include="Models\ViewModelProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +201,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Model\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Origin\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Origin\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Origin\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Origin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Type\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Type\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Type\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Type\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

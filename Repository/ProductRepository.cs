@@ -38,5 +38,22 @@ namespace Repository
         {
             throw new NotImplementedException();
         }
+
+        public bool IsOriginAlreadyUsed(int originId)
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                return db.Products.Any(c => c.Origin_OriginId == originId);
+            }
+        }
+
+
+        public bool IsTypeAlreadyUsed(int typeId)
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                return db.Products.Any(c => c.Type_TypeId == typeId);
+            }
+        }
     }
 }

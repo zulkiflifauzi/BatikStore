@@ -44,6 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\GeneralLocalisations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralLocalisations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\TypeLocalisations.Designer.cs">
+      <DependentUpon>TypeLocalisations.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="TypeService.cs" />
+    <Compile Include="Interfaces\ITypeService.cs" />
+    <Compile Include="OriginService.cs" />
+    <Compile Include="Interfaces\IOriginService.cs" />
     <Compile Include="Interfaces\IModelService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="ModelService.cs" />
@@ -53,6 +67,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelLocalisations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\OriginLocalisations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OriginLocalisations.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +88,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\GeneralLocalisations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneralLocalisations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TypeLocalisations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TypeLocalisations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\ModelLocalisations.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelLocalisations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\OriginLocalisations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OriginLocalisations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

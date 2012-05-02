@@ -40,7 +40,7 @@ namespace Domain
             if (_productService.IsModelAlreadyUsed(entity.Id) == true)
             {
                 response.IsError = true;
-                response.ErrorCodes.Add(ModelLocalisations.ModelCannotBeEdited);
+                response.ErrorCodes.Add(string.Format(GeneralLocalisations.CannotBeEdited, ModelLocalisations.Model));
                 return response;
             }
             _modelRepository.Update(entity);
@@ -58,7 +58,7 @@ namespace Domain
             if (_productService.IsModelAlreadyUsed(id) == true)
             {
                 response.IsError = true;
-                response.ErrorCodes.Add(ModelLocalisations.ModelCannotBeDeleted);
+                response.ErrorCodes.Add(string.Format(GeneralLocalisations.CannotBeDeleted, ModelLocalisations.Model));
                 return response;
             }
             _modelRepository.Delete(id);

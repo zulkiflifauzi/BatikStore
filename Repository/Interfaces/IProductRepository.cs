@@ -8,5 +8,7 @@ namespace Repository.Interfaces
     public interface IProductRepository : ICRUDRepository<Product>
     {
         bool IsModelAlreadyUsed(int modelId);
+        bool IsOriginAlreadyUsed(int originId);
+        bool IsTypeAlreadyUsed(int typeId);
     }
 }

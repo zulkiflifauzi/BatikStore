@@ -22,14 +22,14 @@ namespace Domain.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ModelLocalisations {
+    internal class OriginLocalisations {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ModelLocalisations() {
+        internal OriginLocalisations() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Domain.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Domain.Resources.ModelLocalisations", typeof(ModelLocalisations).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Domain.Resources.OriginLocalisations", typeof(OriginLocalisations).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Model.
+        ///   Looks up a localized string similar to Origin.
         /// </summary>
-        internal static string Model {
+        internal static string Origin {
             get {
-                return ResourceManager.GetString("Model", resourceCulture);
+                return ResourceManager.GetString("Origin", resourceCulture);
             }
         }
     }

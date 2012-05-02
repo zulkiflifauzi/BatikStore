@@ -62,6 +62,12 @@ namespace WebUI.App_Start
 
             kernel.Bind<IModelService>().To<ModelService>();
             kernel.Bind<IModelRepository>().To<ModelRepository>();
+
+            kernel.Bind<IOriginService>().To<OriginService>();
+            kernel.Bind<IOriginRepository>().To<OriginRepository>();
+
+            kernel.Bind<ITypeService>().To<TypeService>();
+            kernel.Bind<ITypeRepository>().To<TypeRepository>();
         }        
     }
 }

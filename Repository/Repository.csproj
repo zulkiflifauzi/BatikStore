@@ -48,6 +48,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BatikStore.edmx</DependentUpon>
     </Compile>
+    <Compile Include="TypeRepository.cs" />
+    <Compile Include="Interfaces\ITypeRepository.cs" />
+    <Compile Include="OriginRepository.cs" />
+    <Compile Include="Interfaces\IOriginRepository.cs" />
     <Compile Include="Interfaces\ICRUDRepository.cs" />
     <Compile Include="Interfaces\IModelRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />

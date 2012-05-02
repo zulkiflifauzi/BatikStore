@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Model" xml:space="preserve">
-    <value>Model</value>
+  <data name="CannotBeDeleted" xml:space="preserve">
+    <value>The {0} being referenced by another item, thus cannot be deleted.</value>
+  </data>
+  <data name="CannotBeEdited" xml:space="preserve">
+    <value>The {0} being referenced by another item, thus cannot be deleted.</value>
   </data>
 </root>

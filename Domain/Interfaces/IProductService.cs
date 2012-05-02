@@ -10,5 +10,7 @@ namespace Domain.Interfaces
     {
         List<Product> GetAll();
         bool IsModelAlreadyUsed(int modelId);
+        bool IsOriginAlreadyUsed(int originId);
+        bool IsTypeAlreadyUsed(int originId);
     }
 }

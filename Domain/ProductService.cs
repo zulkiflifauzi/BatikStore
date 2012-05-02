@@ -28,5 +28,15 @@ namespace Domain
         {
             return _productRepository.IsModelAlreadyUsed(modelId);
         }
+
+        public bool IsOriginAlreadyUsed(int originId)
+        {
+            return _productRepository.IsOriginAlreadyUsed(originId);
+        }
+
+        public bool IsTypeAlreadyUsed(int originId)
+        {
+            return _productRepository.IsTypeAlreadyUsed(originId);
+        }
     }
 }
