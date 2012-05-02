@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit Origin</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -13,8 +13,6 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary()
     <fieldset>
-        <legend>Edit Origin</legend>
-
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">

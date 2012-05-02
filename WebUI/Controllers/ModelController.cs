@@ -61,7 +61,7 @@ namespace WebUI.Controllers
                     ModelState.AddModelError(item, item);
                 }
 
-                return View();
+                return View(model);
             }
             return RedirectToAction("Index");
         }

@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Types List</h2>
-@Html.ValidationSummary()
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div>
+    <div style="float:right">@Html.ActionLink("Create New", "Create")</div>
+     <div><h2>Types List</h2></div>
+</div>
 <table>
     <tr>
         <th>

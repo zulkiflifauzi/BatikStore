@@ -17,8 +17,9 @@ namespace WebUI.App_Start
         public static void Start()
         {
             Mapper.CreateMap<Product, ViewModelProduct>()
-                .ForMember(dest => dest.ModelName, opt => opt.MapFrom(src => src.Model != null ? src.Model.Name : string.Empty));
-            Mapper.CreateMap<ViewModelProduct, Product>();
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.DateEntered.ToString("d MMM yyyy")));
+            Mapper.CreateMap<ViewModelProduct, Product>()
+                .ForMember(x => x.Type, opt => opt.Ignore()); ;
 
             Mapper.CreateMap<Model, ViewModelModel>();
             Mapper.CreateMap<ViewModelModel, Model>();
@@ -26,8 +27,11 @@ namespace WebUI.App_Start
             Mapper.CreateMap<Origin, ViewModelOrigin>();
             Mapper.CreateMap<ViewModelOrigin, Origin>();
 
-            Mapper.CreateMap<Type, ViewModelType>();
-            Mapper.CreateMap<ViewModelType, Type>();
+            Mapper.CreateMap<Repository.Type, ViewModelType>();
+            Mapper.CreateMap<ViewModelType, Repository.Type>();
+
+            Mapper.CreateMap<Size, ViewModelSize>();
+            Mapper.CreateMap<ViewModelSize, Size>();
         }
 
         /// <summary>

@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\ProductLocalisations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductLocalisations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\SizeLocalisations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SizeLocalisations.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SizeService.cs" />
+    <Compile Include="Interfaces\ISizeService.cs" />
     <Compile Include="Resources\GeneralLocalisations.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +103,14 @@
     <EmbeddedResource Include="Resources\GeneralLocalisations.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GeneralLocalisations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ProductLocalisations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductLocalisations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SizeLocalisations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SizeLocalisations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TypeLocalisations.resx">
       <Generator>ResXFileCodeGenerator</Generator>

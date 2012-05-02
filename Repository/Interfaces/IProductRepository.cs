@@ -10,5 +10,8 @@ namespace Repository.Interfaces
         bool IsModelAlreadyUsed(int modelId);
         bool IsOriginAlreadyUsed(int originId);
         bool IsTypeAlreadyUsed(int typeId);
+        bool IsSizeAlreadyUsed(int sizeId);
+        Product GetByNumber(string number);
+        Product GetById(int Id);
     }
 }

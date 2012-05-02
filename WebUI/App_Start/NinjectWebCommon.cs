@@ -68,6 +68,9 @@ namespace WebUI.App_Start
 
             kernel.Bind<ITypeService>().To<TypeService>();
             kernel.Bind<ITypeRepository>().To<TypeRepository>();
+
+            kernel.Bind<ISizeService>().To<SizeService>();
+            kernel.Bind<ISizeRepository>().To<SizeRepository>();
         }        
     }
 }

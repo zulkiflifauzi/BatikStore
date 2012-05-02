@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlreadyExist" xml:space="preserve">
+    <value>The {0} with {1} '{2}' already exist.</value>
+  </data>
   <data name="CannotBeDeleted" xml:space="preserve">
     <value>The {0} being referenced by another item, thus cannot be deleted.</value>
   </data>

@@ -108,22 +108,6 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Product> Products
-        {
-            get
-            {
-                if ((_Products == null))
-                {
-                    _Products = base.CreateObjectSet<Product>("Products");
-                }
-                return _Products;
-            }
-        }
-        private ObjectSet<Product> _Products;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Size> Sizes
         {
             get
@@ -152,6 +136,22 @@ namespace Repository
             }
         }
         private ObjectSet<Type> _Types;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Product> Products
+        {
+            get
+            {
+                if ((_Products == null))
+                {
+                    _Products = base.CreateObjectSet<Product>("Products");
+                }
+                return _Products;
+            }
+        }
+        private ObjectSet<Product> _Products;
 
         #endregion
         #region AddTo Methods
@@ -173,14 +173,6 @@ namespace Repository
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Products EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToProducts(Product product)
-        {
-            base.AddObject("Products", product);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Sizes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToSizes(Size size)
@@ -194,6 +186,14 @@ namespace Repository
         public void AddToTypes(Type type)
         {
             base.AddObject("Types", type);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Products EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProducts(Product product)
+        {
+            base.AddObject("Products", product);
         }
 
         #endregion
@@ -431,11 +431,15 @@ namespace Repository
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="number">Initial value of the Number property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String number)
+        /// <param name="promoted">Initial value of the Promoted property.</param>
+        /// <param name="dateEntered">Initial value of the DateEntered property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String number, global::System.Boolean promoted, global::System.DateTime dateEntered)
         {
             Product product = new Product();
             product.Id = id;
             product.Number = number;
+            product.Promoted = promoted;
+            product.DateEntered = dateEntered;
             return product;
         }
 
@@ -612,6 +616,54 @@ namespace Repository
         private Nullable<global::System.Int32> _Model_ModelId;
         partial void OnModel_ModelIdChanging(Nullable<global::System.Int32> value);
         partial void OnModel_ModelIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Promoted
+        {
+            get
+            {
+                return _Promoted;
+            }
+            set
+            {
+                OnPromotedChanging(value);
+                ReportPropertyChanging("Promoted");
+                _Promoted = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Promoted");
+                OnPromotedChanged();
+            }
+        }
+        private global::System.Boolean _Promoted;
+        partial void OnPromotedChanging(global::System.Boolean value);
+        partial void OnPromotedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DateEntered
+        {
+            get
+            {
+                return _DateEntered;
+            }
+            set
+            {
+                OnDateEnteredChanging(value);
+                ReportPropertyChanging("DateEntered");
+                _DateEntered = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DateEntered");
+                OnDateEnteredChanged();
+            }
+        }
+        private global::System.DateTime _DateEntered;
+        partial void OnDateEnteredChanging(global::System.DateTime value);
+        partial void OnDateEnteredChanged();
 
         #endregion
     

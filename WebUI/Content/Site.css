@@ -79,7 +79,7 @@ h5, h6 {
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
 .page {
-    width: 800px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -239,6 +239,10 @@ table th {
 
 /* MISC  
 ----------------------------------------------------------*/
+.banner {    
+    background-image:url('images/banner.gif');
+    height:142px;
+}
 .thAction
 {
     width: 90px;
