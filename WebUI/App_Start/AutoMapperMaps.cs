@@ -32,6 +32,9 @@ namespace WebUI.App_Start
 
             Mapper.CreateMap<Size, ViewModelSize>();
             Mapper.CreateMap<ViewModelSize, Size>();
+
+            Mapper.CreateMap<Picture, ViewModelPicture>();
+            Mapper.CreateMap<ViewModelPicture, Picture>();
         }
 
         /// <summary>

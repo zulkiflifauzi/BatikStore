@@ -24,7 +24,7 @@ namespace WebUI
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Product", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Catalogue", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

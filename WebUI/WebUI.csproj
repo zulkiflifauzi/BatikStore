@@ -99,6 +99,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModelPicture.cs" />
     <Compile Include="Models\ViewModelSize.cs" />
     <Compile Include="Models\ViewModelType.cs" />
     <Compile Include="Models\ViewModelOrigin.cs" />
@@ -109,11 +110,14 @@
   <ItemGroup>
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\banner.gif" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\lightbox-blank.gif" />
     <Content Include="Content\images\lightbox-btn-close.gif" />
     <Content Include="Content\images\lightbox-btn-next.gif" />
     <Content Include="Content\images\lightbox-btn-prev.gif" />
     <Content Include="Content\images\lightbox-ico-loading.gif" />
+    <Content Include="Content\images\picture.png" />
     <Content Include="Content\jquery.lightbox-0.5.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

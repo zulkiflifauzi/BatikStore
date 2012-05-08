@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("BatikStoreModel", "FK_Product_Model", "Model", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Repository.Model), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Product), true)]
 [assembly: EdmRelationshipAttribute("BatikStoreModel", "FK_Product_Origin", "Origin", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Repository.Origin), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Product), true)]
+[assembly: EdmRelationshipAttribute("BatikStoreModel", "FK_Pictures_Products", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Product), "Picture", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Picture), true)]
 [assembly: EdmRelationshipAttribute("BatikStoreModel", "FK_Product_Size", "Size", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Repository.Size), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Product), true)]
 [assembly: EdmRelationshipAttribute("BatikStoreModel", "FK_Product_Type", "Type", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Repository.Type), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Product), true)]
 
@@ -140,6 +141,22 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Picture> Pictures
+        {
+            get
+            {
+                if ((_Pictures == null))
+                {
+                    _Pictures = base.CreateObjectSet<Picture>("Pictures");
+                }
+                return _Pictures;
+            }
+        }
+        private ObjectSet<Picture> _Pictures;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Product> Products
         {
             get
@@ -186,6 +203,14 @@ namespace Repository
         public void AddToTypes(Type type)
         {
             base.AddObject("Types", type);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Pictures EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPictures(Picture picture)
+        {
+            base.AddObject("Pictures", picture);
         }
     
         /// <summary>
@@ -409,6 +434,178 @@ namespace Repository
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("BatikStoreModel.FK_Product_Origin", "Product", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BatikStoreModel", Name="Picture")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Picture : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Picture object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="url">Initial value of the Url property.</param>
+        /// <param name="product_ProductId">Initial value of the Product_ProductId property.</param>
+        public static Picture CreatePicture(global::System.Int32 id, global::System.String url, global::System.Int32 product_ProductId)
+        {
+            Picture picture = new Picture();
+            picture.Id = id;
+            picture.Url = url;
+            picture.Product_ProductId = product_ProductId;
+            return picture;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                OnUrlChanging(value);
+                ReportPropertyChanging("Url");
+                _Url = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Url");
+                OnUrlChanged();
+            }
+        }
+        private global::System.String _Url;
+        partial void OnUrlChanging(global::System.String value);
+        partial void OnUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Product_ProductId
+        {
+            get
+            {
+                return _Product_ProductId;
+            }
+            set
+            {
+                OnProduct_ProductIdChanging(value);
+                ReportPropertyChanging("Product_ProductId");
+                _Product_ProductId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Product_ProductId");
+                OnProduct_ProductIdChanged();
+            }
+        }
+        private global::System.Int32 _Product_ProductId;
+        partial void OnProduct_ProductIdChanging(global::System.Int32 value);
+        partial void OnProduct_ProductIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BatikStoreModel", "FK_Pictures_Products", "Product")]
+        public Product Product
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("BatikStoreModel.FK_Pictures_Products", "Product").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("BatikStoreModel.FK_Pictures_Products", "Product").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Product> ProductReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("BatikStoreModel.FK_Pictures_Products", "Product");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Product>("BatikStoreModel.FK_Pictures_Products", "Product", value);
                 }
             }
         }
@@ -741,6 +938,28 @@ namespace Repository
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Origin>("BatikStoreModel.FK_Product_Origin", "Origin", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BatikStoreModel", "FK_Pictures_Products", "Picture")]
+        public EntityCollection<Picture> Pictures
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Picture>("BatikStoreModel.FK_Pictures_Products", "Picture");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Picture>("BatikStoreModel.FK_Pictures_Products", "Picture", value);
                 }
             }
         }

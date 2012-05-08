@@ -74,10 +74,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |@*
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        <td style="text-align:center">
+            @Html.ActionImage("Edit", "Product", new { id = item.Id }, "~/Content/Images/edit.png", "Edit") 
+            @Html.ActionImage("Delete", "Product", new { id = item.Id }, "~/Content/Images/delete.png", "Delete")
+            @Html.ActionImage("Create", "Picture", new { id = item.Id }, "~/Content/Images/picture.png", "Add Pictures")
         </td>
     </tr>
 }
