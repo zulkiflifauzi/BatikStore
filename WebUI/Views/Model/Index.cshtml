@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebUI.Models.ViewModelModel>
+@using WebUI.Component
 
 @{
     ViewBag.Title = "Index";
@@ -24,10 +25,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        <td style="text-align:center">
+            @Html.ActionImage("Edit", "Model", new { id = item.Id }, "~/Content/Images/edit.png", "Edit") 
+            @Html.ActionImage("Delete", "Model", new { id = item.Id }, "~/Content/Images/delete.png", "Delete")
         </td>
     </tr>
 }

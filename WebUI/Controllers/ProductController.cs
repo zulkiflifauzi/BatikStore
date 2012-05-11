@@ -83,6 +83,29 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(int id)
+        {
+            var product = Mapper.Map<Product, ViewModelProduct>(_productService.GetById(id));
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(ViewModelProduct product)
+        {
+            ResponseMessage response = _productService.Delete(product.Id);
+
+            if (response.IsError == true)
+            {
+                foreach (var item in response.ErrorCodes)
+                {
+                    ModelState.AddModelError(item, item);
+                }
+
+                return View();
+            }
+            return RedirectToAction("Index");
+        }
+
         public void PrepareSelectList()
         {
             List<SelectListItem> sizeList = new List<SelectListItem>();

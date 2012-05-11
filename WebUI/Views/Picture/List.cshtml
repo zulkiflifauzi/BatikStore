@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebUI.Models.ViewModelPicture>
+@using WebUI.Component
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div style="float:right">@Html.ActionLink("Create New", "Create", new { id = ViewBag.ProductId })</div>
+     <div><h2>Pictures for Product number @ViewBag.ProductNumber</h2></div>
+</div>
+<table>
+    <tr>
+        <th>
+            Url
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.Url)" width="72" height="72" alt="" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td style="text-align:center">
+            @Html.ActionImage("Edit", "Picture", new { id = item.Id }, "~/Content/Images/edit.png", "Edit") 
+            @Html.ActionImage("Delete", "Picture", new { id = item.Id }, "~/Content/Images/delete.png", "Delete")
+        </td>
+    </tr>
+}
+
+</table>

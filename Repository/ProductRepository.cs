@@ -48,7 +48,15 @@ namespace Repository
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new BatikStoreEntities())
+            {
+                var existing = db.Products.SingleOrDefault(c => c.Id == id);
+                if (existing != null)
+                {
+                    db.Products.DeleteObject(existing);
+                    db.SaveChanges();
+                }
+            }
         }
 
         public bool IsOriginAlreadyUsed(int originId)

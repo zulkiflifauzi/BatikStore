@@ -17,5 +17,6 @@ namespace Domain.Interfaces
         ResponseMessage Add(Product entity);
         Product GetById(int id);
         ResponseMessage Update(Product entity);
+        ResponseMessage Delete(int id);
     }
 }

@@ -84,5 +84,13 @@ namespace Domain
             _productRepository.Update(entity);
             return response;
         }
+
+
+        public ResponseMessage Delete(int id)
+        {
+            ResponseMessage response = new ResponseMessage();           
+            _productRepository.Delete(id);
+            return response;
+        }
     }
 }

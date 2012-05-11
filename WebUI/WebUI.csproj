@@ -91,6 +91,7 @@
     <Compile Include="Component\HtmlComponent.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
+    <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\SizeController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
@@ -265,6 +266,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Catalogue\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Product\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Picture\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Picture\Create.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

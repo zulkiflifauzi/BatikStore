@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IPictureService.cs" />
+    <Compile Include="PictureService.cs" />
     <Compile Include="Resources\ProductLocalisations.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

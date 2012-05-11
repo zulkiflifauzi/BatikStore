@@ -71,6 +71,9 @@ namespace WebUI.App_Start
 
             kernel.Bind<ISizeService>().To<SizeService>();
             kernel.Bind<ISizeRepository>().To<SizeRepository>();
+
+            kernel.Bind<IPictureService>().To<PictureService>();
+            kernel.Bind<IPictureRepository>().To<PictureRepository>();
         }        
     }
 }
