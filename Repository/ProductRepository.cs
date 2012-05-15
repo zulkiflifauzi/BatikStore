@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Repository.Interfaces;
+using Base;
 
 namespace Repository
 {
@@ -12,7 +13,7 @@ namespace Repository
         {
             using (var db = new BatikStoreEntities())
             {
-                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").ToList();
+                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").ToList();
             }
         }
 
@@ -90,7 +91,7 @@ namespace Repository
         {
             using (var db = new BatikStoreEntities())
             {
-                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").SingleOrDefault(c => c.Number.Equals(number));
+                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").SingleOrDefault(c => c.Number.Equals(number));
             }
         }
 
@@ -99,7 +100,18 @@ namespace Repository
         {
             using (var db = new BatikStoreEntities())
             {
-                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").SingleOrDefault(c => c.Id == Id);
+                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").SingleOrDefault(c => c.Id == Id);
+            }
+        }
+
+
+        public List<Product> GetRandomPromotedProducts()
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                var products = db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").Where(c => c.Promoted == true).ToList();
+
+                return products.GetRandomFromList(Constant.PromotedProducts).ToList();
             }
         }
     }

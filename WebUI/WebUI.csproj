@@ -100,6 +100,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModelCatalogue.cs" />
     <Compile Include="Models\ViewModelPicture.cs" />
     <Compile Include="Models\ViewModelSize.cs" />
     <Compile Include="Models\ViewModelType.cs" />
@@ -118,6 +119,7 @@
     <Content Include="Content\images\lightbox-btn-next.gif" />
     <Content Include="Content\images\lightbox-btn-prev.gif" />
     <Content Include="Content\images\lightbox-ico-loading.gif" />
+    <Content Include="Content\images\not-available.gif" />
     <Content Include="Content\images\picture.png" />
     <Content Include="Content\jquery.lightbox-0.5.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

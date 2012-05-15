@@ -18,5 +18,6 @@ namespace Domain.Interfaces
         Product GetById(int id);
         ResponseMessage Update(Product entity);
         ResponseMessage Delete(int id);
+        List<Product> GetRandomPromotedProducts();
     }
 }

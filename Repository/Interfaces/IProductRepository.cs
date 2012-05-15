@@ -13,5 +13,6 @@ namespace Repository.Interfaces
         bool IsSizeAlreadyUsed(int sizeId);
         Product GetByNumber(string number);
         Product GetById(int Id);
+        List<Product> GetRandomPromotedProducts();
     }
 }

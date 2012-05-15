@@ -5,6 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.lightbox').lightBox({ fixedNavigation: true });
+    });
+</script>
+
 <div>
     <div style="float:right">@Html.ActionLink("Create New", "Create", new { id = ViewBag.ProductId })</div>
      <div><h2>Pictures for Product number @ViewBag.ProductNumber</h2></div>
@@ -17,14 +23,16 @@
         <th>
             Description
         </th>
-        <th></th>
+        <th class="thAction">
+            Action
+        </th>
     </tr>
 
 @foreach (var item in Model)
 {
     <tr>
         <td>
-            <img src="@Html.DisplayFor(modelItem => item.Url)" width="72" height="72" alt="" />
+            <a class="lightbox" href="@Html.DisplayFor(modelItem => item.Url)"><img src="@Html.DisplayFor(modelItem => item.Url)" width="72" height="72" alt="" /></a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

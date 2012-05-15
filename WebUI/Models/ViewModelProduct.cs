@@ -42,5 +42,13 @@ namespace WebUI.Models
         public string OriginName { get; set; }
 
         public string Date { get; set; }
+
+        private List<ViewModelPicture> _pictures = new List<ViewModelPicture>();
+
+        public List<ViewModelPicture> Pictures
+        {
+            get { return _pictures; }
+            set { _pictures = value; }
+        }
     }
 }

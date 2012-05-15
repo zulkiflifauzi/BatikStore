@@ -92,5 +92,10 @@ namespace Domain
             _productRepository.Delete(id);
             return response;
         }
+
+        public List<Product> GetRandomPromotedProducts()
+        {
+            return _productRepository.GetRandomPromotedProducts();
+        }
     }
 }

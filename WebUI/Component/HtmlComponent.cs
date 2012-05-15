@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Text;
 using Resources;
+using WebUI.Models;
 
 namespace WebUI.Component
 {
@@ -70,6 +71,35 @@ namespace WebUI.Component
             string anchorHtml = anchorBuilder.ToString(TagRenderMode.Normal);
 
             return MvcHtmlString.Create(anchorHtml);
+        }
+
+        public static MvcHtmlString PromotedProducts(this HtmlHelper html, List<ViewModelProduct> products, string className)
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.Append("<ul>");
+            foreach (var item in products)
+            {
+                string url = item.Pictures.Count > 0 ? item.Pictures.FirstOrDefault().Url : "/Content/images/not-available.gif";
+                string description = item.Pictures.Count > 0 ? item.Pictures.FirstOrDefault().Description : "Picture is not available";
+                var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
+                string targetUrl = urlHelper.Action("Detail", "Product", new { id = item.Id });
+
+                result.Append("<li>");
+                result.Append("<a class='");
+                result.Append(className);
+                result.Append("' target='_blank' href='");
+                result.Append(targetUrl);
+                result.Append("' title='");
+                result.Append(description);
+                result.Append("'><img src='");
+                result.Append(url);
+                result.Append("' width='200' height='200'/></a>");
+                result.Append("</li>");
+            }
+            result.Append("</ul>");
+
+            return MvcHtmlString.Create(result.ToString());
         }
 
     }

@@ -1,14 +1,14 @@
-﻿@{
+﻿@model WebUI.Models.ViewModelCatalogue
+@using WebUI.Component
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="@Url.Content("~/Scripts/jquery.lightbox-0.5.js")" type="text/javascript"></script>
-<link href="@Url.Content("~/Content/jquery.lightbox-0.5.css")" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('.lightbox').lightBox({ fixedNavigation: true });
-    });
+//    $(document).ready(function () {
+//        $('.promoted').lightBox();
+//    });
 </script>
 
 <div style="text-align:right">
@@ -16,10 +16,8 @@
 </div>
 
 <div class="banner"></div>
-@*<div style="border-radius: 4px 4px 4px 4px;background-color:#1C0F14;padding:0.1em 1.5em 0.1em 1.5em">*@
-<div style="padding:0.1em 1.5em 0.1em 1.5em">
+<div id="catalogue">
     <h3>Batik Terpopuler</h3>
     <hr />
-    <a class="lightbox" href="http://lovestory.progressive-farmer.com/wp-content/gallery/edited/P1000928.jpg"><img src="http://lovestory.progressive-farmer.com/wp-content/gallery/edited/thumbs/thumbs_P1000928.jpg" width="72" height="72" alt="" /></a>
-    <a class="lightbox" href="http://lovestory.progressive-farmer.com/wp-content/gallery/edited/P1000929.jpg"><img src="http://lovestory.progressive-farmer.com/wp-content/gallery/edited/thumbs/thumbs_P1000929.jpg" width="72" height="72" alt="" /></a>
+    @Html.PromotedProducts(Model.PromotedProducts, "promoted")
 </div>

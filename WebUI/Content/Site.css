@@ -337,3 +337,18 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+#catalogue
+{
+    padding:0.1em 1.5em 0.1em 1.5em;
+}
+
+#catalogue ul {
+    list-style: none outside none;
+    text-align: center;
+}
+
+#catalogue ul li {
+    display: inline;
+    padding: 5px;
+}
