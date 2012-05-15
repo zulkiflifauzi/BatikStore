@@ -73,3 +73,6 @@
 /WebUI/obj/Debug/WebUI.csproj.FileListAbsolute.txt
 /WebUI/obj/Debug/WebUI.dll
 /WebUI/obj/Debug/WebUI.pdb
+/Repository/bin/Debug/Base.dll
+/Repository/bin/Debug/Base.pdb
+/Repository/obj/Debug/ResolveAssemblyReference.cache
