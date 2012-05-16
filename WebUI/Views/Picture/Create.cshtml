@@ -8,7 +8,7 @@
 <h2>Create Picture</h2>
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(false)
     <fieldset>
         <div class="editor-label">
             @Html.LabelFor(model => model.Url)

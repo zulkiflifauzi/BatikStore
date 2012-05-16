@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using WebUI.Component
+@using Base
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,6 +19,8 @@
     <script src="@Url.Content("~/Scripts/lightbox.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/lightbox.css")" rel="stylesheet" type="text/css" media="screen" />  
     <script src="@Url.Content("~/Scripts/jquery.smooth-scroll.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/commonFunction.js")" type="text/javascript"></script>
 </head>
 <body>
     <div class="page">
@@ -22,15 +28,19 @@
             @*<div id="title">
                 <h1>My MVC Application</h1>
             </div>*@
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
             <nav>
                 <ul id="menu">
                     <li>@Html.ActionLink("Katalog", "Index", "Catalogue")</li>
                     <li>@Html.ActionLink("Cari Barang", "Search", "Product")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Product")</li>
-                    <li>@Html.ActionLink("Models", "Index", "Model")</li>
-                    <li>@Html.ActionLink("Origins", "Index", "Origin")</li>
-                    <li>@Html.ActionLink("Types", "Index", "Type")</li>
-                    <li>@Html.ActionLink("Sizes", "Index", "Size")</li>
+                    <li>@Html.ActionLink("Cara Order", "Order", "Product")</li>
+                    <li @Html.HasPermissions("Administrator",@Constant.ControlBehaviour.HIDDEN)>@Html.ActionLink("Products", "Index", "Product")</li>
+                    <li @Html.HasPermissions("Administrator", @Constant.ControlBehaviour.HIDDEN)>@Html.ActionLink("Models", "Index", "Model")</li>
+                    <li @Html.HasPermissions("Administrator", @Constant.ControlBehaviour.HIDDEN)>@Html.ActionLink("Origins", "Index", "Origin")</li>
+                    <li @Html.HasPermissions("Administrator", @Constant.ControlBehaviour.HIDDEN)>@Html.ActionLink("Types", "Index", "Type")</li>
+                    <li @Html.HasPermissions("Administrator", @Constant.ControlBehaviour.HIDDEN)>@Html.ActionLink("Sizes", "Index", "Size")</li>
                 </ul>
             </nav>
         </header>

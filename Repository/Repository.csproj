@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Interfaces\IPictureRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="PictureRepository.cs" />
     <Compile Include="SizeRepository.cs" />
     <Compile Include="Interfaces\ISizeRepository.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="ModelRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BatikStore.edmx">

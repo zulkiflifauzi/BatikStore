@@ -21,18 +21,20 @@ namespace WebUI.Controllers
             _sizeService = sizeService;
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var models = Mapper.Map<List<Size>, List<ViewModelSize>>(_sizeService.GetAll());
             return View(models);
         }
 
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Create(ViewModelSize model)
         {
@@ -41,11 +43,13 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View(Mapper.Map<Size, ViewModelSize>(_sizeService.GetSizeById(id)));
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Edit(ViewModelSize model)
         {
@@ -64,6 +68,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             ResponseMessage response = _sizeService.Delete(id);

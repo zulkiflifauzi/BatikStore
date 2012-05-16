@@ -24,6 +24,7 @@ namespace WebUI.Controllers
             _productService = productService;
         }
 
+
         public ActionResult List(int id)
         {
             ViewBag.ProductNumber = _productService.GetById(id).Number;
@@ -31,6 +32,7 @@ namespace WebUI.Controllers
             return View("List", Mapper.Map<List<Picture>, List<ViewModelPicture>>(_pictureService.GetPicturesByProductId(id)));
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(int id)
         {
             ViewData["productId"] = id;
@@ -38,6 +40,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(ViewModelPicture model)
         {
             var entity = Mapper.Map<ViewModelPicture, Picture>(model);
@@ -45,12 +48,14 @@ namespace WebUI.Controllers
             return RedirectToAction("List", new { id = model.Product_ProductId });
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View(Mapper.Map<Picture, ViewModelPicture>(_pictureService.GetPictureById(id)));
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(ViewModelPicture model)
         {
             var entity = Mapper.Map<ViewModelPicture, Picture>(model);
@@ -68,12 +73,14 @@ namespace WebUI.Controllers
             return RedirectToAction("List", new { id = model.Product_ProductId });
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             var product = Mapper.Map<Picture, ViewModelPicture>(_pictureService.GetPictureById(id));
             return View(product);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Delete(ViewModelPicture model)
         {

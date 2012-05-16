@@ -35,6 +35,9 @@ namespace WebUI.App_Start
 
             Mapper.CreateMap<Picture, ViewModelPicture>();
             Mapper.CreateMap<ViewModelPicture, Picture>();
+
+            Mapper.CreateMap<User, ViewModelLogin>();
+            Mapper.CreateMap<ViewModelLogin, User>();
         }
 
         /// <summary>

@@ -22,18 +22,20 @@ namespace WebUI.Controllers
             _originService = originService;
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {            
             var models = Mapper.Map<List<Origin>, List<ViewModelOrigin>>(_originService.GetAll());
             return View(models);
         }
 
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Create(ViewModelOrigin model)
         {
@@ -42,11 +44,13 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View(Mapper.Map<Origin, ViewModelOrigin>(_originService.GetModelById(id)));
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Edit(ViewModelOrigin model)
         {
@@ -65,6 +69,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             ResponseMessage response = _originService.Delete(id);

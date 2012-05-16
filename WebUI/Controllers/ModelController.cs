@@ -23,18 +23,20 @@ namespace WebUI.Controllers
             _modelService = modelService;
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {            
             var models = Mapper.Map<List<Model>, List<ViewModelModel>>(_modelService.GetAll());
             return View(models);
         }
 
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Create(ViewModelModel model)
         {
@@ -43,11 +45,13 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View(Mapper.Map<Model,ViewModelModel>(_modelService.GetModelById(id)));
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult Edit(ViewModelModel model)
         {
@@ -66,6 +70,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             ResponseMessage response = _modelService.Delete(id);

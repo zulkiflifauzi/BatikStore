@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IPictureService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="PictureService.cs" />
     <Compile Include="Resources\ProductLocalisations.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -87,6 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OriginLocalisations.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Base\Base.csproj">

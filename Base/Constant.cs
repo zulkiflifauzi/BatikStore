@@ -11,5 +11,11 @@ namespace Base
         public static int LatestProducts = 4;
         public static int RandomProducts = 8;
         public static int ItemPerPage = 12;
+
+        public static class ControlBehaviour
+        {
+            public const string DISABLED = "disabled";
+            public const string HIDDEN = "hidden";
+        }
     }
 }

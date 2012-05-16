@@ -1,6 +1,106 @@
-﻿@{
+﻿@model WebUI.Models.ViewModelProduct
+@using WebUI.Component  
+@using Base         
+@using Resources
+
+@{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    var skip = 0;
+    var resultsCount = 0;
+
+    $(document).ready(function () {
+        $("#search-button").live("click", function () {
+            $("#productList").html("");
+            skip = 0;
+            resultsCount = 0;
+            SearchProducts();
+        });
+    });
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height() - 1) {
+            if(resultsCount == @Constant.ItemPerPage)
+            {
+                skip += @Constant.ItemPerPage;
+                SearchProducts();
+            }
+        }
+    });
+
+    function SearchProducts()
+    {
+        LoadMessage("Loading");
+        var url = '@Url.Action("Search", "Product")';
+        var urlParameter = "Name=" + $("#Name").val() + "&Number=" + $("#Number").val() + "&Size_SizeId=" + $("#Size_SizeId").val() + "&Type_TypeId=" + $("#Type_TypeId").val() + "&Model_ModelId=" + $("#Model_ModelId").val() + "&Origin_OriginId=" + $("#Origin_OriginId").val() + "&skip=" + skip;
+        $.post(url, urlParameter, function (data) {
+            resultsCount = data.length;
+            GenerateList(data);
+            $(".tiptip").tipTip({ maxWidth: "600px", edgeOffset: 10, keepAlive: false });        
+            $('.currency').formatCurrency({ symbol: "Rp" });
+            $.unblockUI();
+        }, "json");
+    }
+
+    function GenerateList(data) {
+        var result = "";
+        for(var i in data) {
+            result += "<li>";
+            result += "<a class='tiptip promoted' title='" + data[i].Description + ", @GeneralLocalisations.Price Rp." + data[i].Price + "' href='/Product/Details/" + data[i].Id + "' target='_blank'><img height='200' width='200' ";
+            if (data[i].Pictures[0] != undefined)
+                result += "src='" + data[i].Pictures[0].Url + "'>";
+            else
+                result += "src='/Content/images/not-available.gif'>";
+            result += "</a>";
+            result += "</li>";
+        }
+
+        $("#productList").append(result);
+    }
+</script>
+
 <h2>Cari Barang</h2>
+<div id="productContainer">
+    <div style="float: left;width:200px;">
+        <div class="display-label">Nama</div>
+        <div class="display-field">
+            @Html.TextBox("Name")
+        </div>
+
+        <div class="display-label">Nomer</div>
+        <div class="display-field">
+            @Html.TextBox("Number")
+        </div>
+        
+        <div class="display-label">Ukuran</div>
+        <div class="display-field">
+            @Html.DropDownListSingleLine("Size_SizeId", ViewData["Sizes"] as List<SelectListItem>, null)
+        </div>
+
+        <div class="display-label">Model</div>
+        <div class="display-field">
+            @Html.DropDownListSingleLine("Model_ModelId", ViewData["Models"] as List<SelectListItem>, null)
+        </div>
+
+        <div class="display-label">Tipe</div>
+        <div class="display-field">
+            @Html.DropDownListSingleLine("Type_TypeId", ViewData["Types"] as List<SelectListItem>, null)
+        </div>
+
+        <div class="display-label">Asal</div>
+        <div class="display-field">
+            @Html.DropDownListSingleLine("Origin_OriginId", ViewData["Origins"] as List<SelectListItem>, null)
+        </div>
+        <p>
+            <input id="search-button" type="button" value="Search" />
+        </p>
+    </div>
+    <div id ='catalogue' style="margin-left: 200px; width: 700px;">
+        <ul id="productList" style="text-align:left">
+        </ul>
+    </div>
+</div>
+<p>&nbsp;</p>

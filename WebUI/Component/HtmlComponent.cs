@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Text;
 using Resources;
 using WebUI.Models;
+using Base;
 
 namespace WebUI.Component
 {
@@ -107,15 +108,30 @@ namespace WebUI.Component
             StringBuilder result = new StringBuilder();
 
             result.Append("<ul>");
-            foreach (var item in pictures)
+            if (pictures.Count > 0)
+            {
+                foreach (var item in pictures)
+                {
+                    result.Append("<li>");
+                    result.Append("<a rel='lightbox[group]' href='");
+                    result.Append(item.Url);
+                    result.Append("' title='");
+                    result.Append(item.Description);
+                    result.Append("'><img src='");
+                    result.Append(item.Url);
+                    result.Append("' width='200' height='200'/></a>");
+                    result.Append("</li>");
+                }
+            }
+            else 
             {
                 result.Append("<li>");
                 result.Append("<a rel='lightbox[group]' href='");
-                result.Append(item.Url);
+                result.Append("/Content/images/not-available.gif");
                 result.Append("' title='");
-                result.Append(item.Description);
+                result.Append("Gambar tidak tersedia");
                 result.Append("'><img src='");
-                result.Append(item.Url);
+                result.Append("/Content/images/not-available.gif");
                 result.Append("' width='200' height='200'/></a>");
                 result.Append("</li>");
             }
@@ -124,5 +140,23 @@ namespace WebUI.Component
             return MvcHtmlString.Create(result.ToString());
         }
 
+        public static MvcHtmlString HasPermissions(this HtmlHelper htmlHelper, string permission, string behaviour)
+        {
+            String result = "";
+
+            if (!HttpContext.Current.User.IsInRole(permission))
+            {
+                if (behaviour == Constant.ControlBehaviour.DISABLED)
+                {
+                    result = "disabled='disabled'";
+                }
+                else if (behaviour == Constant.ControlBehaviour.HIDDEN)
+                {
+                    result = "style='display:none'";
+                }
+            }
+
+            return MvcHtmlString.Create(result);
+        }
     }
 }

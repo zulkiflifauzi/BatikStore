@@ -29,12 +29,19 @@ namespace WebUI.Controllers
             _modelService = modelService;
         }
 
+        public ActionResult Order()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var products = Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.GetAll());
             return View(products);
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             PrepareSelectList();
@@ -42,6 +49,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(ViewModelProduct product)
         {
             var entity = Mapper.Map<ViewModelProduct, Product>(product);
@@ -59,6 +67,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             var product = Mapper.Map<Product, ViewModelProduct>(_productService.GetById(id));
@@ -67,6 +76,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(ViewModelProduct product)
         {
             var entity = Mapper.Map<ViewModelProduct, Product>(product);
@@ -84,6 +94,7 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             var product = Mapper.Map<Product, ViewModelProduct>(_productService.GetById(id));
@@ -91,6 +102,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(ViewModelProduct product)
         {
             ResponseMessage response = _productService.Delete(product.Id);
@@ -115,16 +127,18 @@ namespace WebUI.Controllers
 
         public ActionResult Search()
         {
+            PrepareSelectList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Search(ViewModelProduct product, int skip)
+        public ActionResult Search(ViewModelProduct product, int? skip)
         {
-            StringBuilder query = new StringBuilder();
+            StringBuilder query = new StringBuilder();            
+
             GenerateQueryString(query, product);
-            var products = Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.Search(query.ToString(),skip));
-            return View(product);
+            var products = Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.Search(query.ToString(),skip.HasValue ? skip.Value : 0));
+            return Json(products);
         }
 
         private static void AppendCriteria(StringBuilder query)
@@ -144,25 +158,32 @@ namespace WebUI.Controllers
                 query.Append("it.Name like '%" + product.Name + "%'");
             }
 
-            if (product.Size_SizeId != 0)
+            if (!string.IsNullOrEmpty(product.Number))
+            {
+                AppendCriteria(query);
+
+                query.Append("it.Number like '%" + product.Number + "%'");
+            }
+
+            if (product.Size_SizeId != null)
             {
                 AppendCriteria(query);
                 query.Append("it.Size_SizeId = " + product.Size_SizeId.Value.ToString());
             }
 
-            if (product.Model_ModelId != 0)
+            if (product.Model_ModelId != null)
             {
                 AppendCriteria(query);
                 query.Append("it.Model_ModelId = " + product.Model_ModelId.Value.ToString());
             }
 
-            if (product.Type_TypeId != 0)
+            if (product.Type_TypeId != null)
             {
                 AppendCriteria(query);
                 query.Append("it.Type_TypeId = " + product.Type_TypeId.Value.ToString());
             }
 
-            if (product.Origin_OriginId != 0)
+            if (product.Origin_OriginId != null)
             {
                 AppendCriteria(query);
                 query.Append("it.Origin_OriginId = " + product.Origin_OriginId.Value.ToString());

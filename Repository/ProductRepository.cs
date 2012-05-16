@@ -140,7 +140,10 @@ namespace Repository
         {
             using (var db = new BatikStoreEntities())
             {
-                return db.Products.Where(searchCriteria).Skip(skip).Take(Constant.ItemPerPage).ToList();
+                if(String.IsNullOrEmpty(searchCriteria))
+                    return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").OrderByDescending(c => c.DateEntered).Skip(skip).Take(Constant.ItemPerPage).ToList();
+                else
+                    return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").Where(searchCriteria).OrderByDescending(c => c.DateEntered).Skip(skip).Take(Constant.ItemPerPage).ToList();
             }
         }
     }
