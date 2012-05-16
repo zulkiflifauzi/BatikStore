@@ -16,5 +16,6 @@ namespace Repository.Interfaces
         List<Product> GetRandomPromotedProducts();
         List<Product> GetRandomProducts(bool includePromoted);
         List<Product> GetLatestProducts();
+        List<Product> Search(string searchCriteria, int skip);
     }
 }

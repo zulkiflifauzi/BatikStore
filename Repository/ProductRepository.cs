@@ -134,5 +134,14 @@ namespace Repository
                 return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").OrderByDescending(c => c.DateEntered).Take(Constant.LatestProducts).ToList();
             }
         }
+
+
+        public List<Product> Search(string searchCriteria, int skip)
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                return db.Products.Where(searchCriteria).Skip(skip).Take(Constant.ItemPerPage).ToList();
+            }
+        }
     }
 }

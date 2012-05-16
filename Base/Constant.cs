@@ -10,5 +10,6 @@ namespace Base
         public static int PromotedProducts = 4;
         public static int LatestProducts = 4;
         public static int RandomProducts = 8;
+        public static int ItemPerPage = 12;
     }
 }

@@ -107,5 +107,11 @@ namespace Domain
         {
             return _productRepository.GetLatestProducts();
         }
+
+
+        public List<Product> Search(string searchCriteria, int skip)
+        {
+            return _productRepository.Search(searchCriteria, skip);
+        }
     }
 }

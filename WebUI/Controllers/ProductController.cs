@@ -8,6 +8,7 @@ using AutoMapper;
 using WebUI.Models;
 using Repository;
 using Base;
+using System.Text;
 namespace WebUI.Controllers
 {
     public class ProductController : BaseController
@@ -112,7 +113,63 @@ namespace WebUI.Controllers
             return View(product);
         }
 
-        public void PrepareSelectList()
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(ViewModelProduct product, int skip)
+        {
+            StringBuilder query = new StringBuilder();
+            GenerateQueryString(query, product);
+            var products = Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.Search(query.ToString(),skip));
+            return View(product);
+        }
+
+        private static void AppendCriteria(StringBuilder query)
+        {
+            if (!string.IsNullOrEmpty(query.ToString()))
+            {
+                query.Append(" AND ");
+            }
+        }
+
+        private static void GenerateQueryString(StringBuilder query, ViewModelProduct product)
+        {
+            if (!string.IsNullOrEmpty(product.Name))
+            {
+                AppendCriteria(query);
+
+                query.Append("it.Name like '%" + product.Name + "%'");
+            }
+
+            if (product.Size_SizeId != 0)
+            {
+                AppendCriteria(query);
+                query.Append("it.Size_SizeId = " + product.Size_SizeId.Value.ToString());
+            }
+
+            if (product.Model_ModelId != 0)
+            {
+                AppendCriteria(query);
+                query.Append("it.Model_ModelId = " + product.Model_ModelId.Value.ToString());
+            }
+
+            if (product.Type_TypeId != 0)
+            {
+                AppendCriteria(query);
+                query.Append("it.Type_TypeId = " + product.Type_TypeId.Value.ToString());
+            }
+
+            if (product.Origin_OriginId != 0)
+            {
+                AppendCriteria(query);
+                query.Append("it.Origin_OriginId = " + product.Origin_OriginId.Value.ToString());
+            }
+        }
+
+        private void PrepareSelectList()
         {
             List<SelectListItem> sizeList = new List<SelectListItem>();
             foreach (var item in _sizeService.GetAll())

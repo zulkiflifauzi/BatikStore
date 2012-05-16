@@ -21,5 +21,6 @@ namespace Domain.Interfaces
         List<Product> GetRandomPromotedProducts();
         List<Product> GetRandomProducts(bool promotedProducts);
         List<Product> GetLatestProducts();
+        List<Product> Search(string searchCriteria, int skip);
     }
 }
