@@ -14,5 +14,7 @@ namespace Repository.Interfaces
         Product GetByNumber(string number);
         Product GetById(int Id);
         List<Product> GetRandomPromotedProducts();
+        List<Product> GetRandomProducts(bool includePromoted);
+        List<Product> GetLatestProducts();
     }
 }

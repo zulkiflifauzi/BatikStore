@@ -1,14 +1,18 @@
 ﻿@model WebUI.Models.ViewModelCatalogue
 @using WebUI.Component
+@using WebUI.Helper
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script type="text/javascript">
-//    $(document).ready(function () {
-//        $('.promoted').lightBox();
-//    });
+    var model = @Html.Raw(Model.ToJSON());
+    $(document).ready(function () {
+        if(model.PromotedProducts.length == 0)
+            $("#batikPopuler").hide();
+    });
 </script>
 
 <div style="text-align:right">
@@ -17,7 +21,19 @@
 
 <div class="banner"></div>
 <div id="catalogue">
-    <h3>Batik Terpopuler</h3>
-    <hr />
-    @Html.PromotedProducts(Model.PromotedProducts, "promoted")
+    <div id="batikPopuler">        
+        <h3>Batik Terpopuler</h3>
+        <hr />
+        @Html.Products(Model.PromotedProducts, "promoted")
+    </div>
+    <div id="batikKoleksi">        
+        <h3>Batik Terbaru</h3>
+        <hr />
+        @Html.Products(Model.LatestProducts, "latest")
+    </div>
+    <div id="batikKoleksi">        
+        <h3>Batik Koleksi</h3>
+        <hr />
+        @Html.Products(Model.RandomProducts, "collection")
+    </div>
 </div>

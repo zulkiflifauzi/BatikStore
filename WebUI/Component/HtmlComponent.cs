@@ -73,7 +73,7 @@ namespace WebUI.Component
             return MvcHtmlString.Create(anchorHtml);
         }
 
-        public static MvcHtmlString PromotedProducts(this HtmlHelper html, List<ViewModelProduct> products, string className)
+        public static MvcHtmlString Products(this HtmlHelper html, List<ViewModelProduct> products, string className)
         {
             StringBuilder result = new StringBuilder();
 

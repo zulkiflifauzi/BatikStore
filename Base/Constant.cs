@@ -8,5 +8,7 @@ namespace Base
     public static class Constant
     {
         public static int PromotedProducts = 4;
+        public static int LatestProducts = 4;
+        public static int RandomProducts = 8;
     }
 }

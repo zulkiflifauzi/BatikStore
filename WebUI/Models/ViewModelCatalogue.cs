@@ -22,5 +22,13 @@ namespace WebUI.Models
             get { return _randomProducts; }
             set { _randomProducts = value; }
         }
+
+        private List<ViewModelProduct> _latestProducts = new List<ViewModelProduct>();
+
+        public List<ViewModelProduct> LatestProducts
+        {
+            get { return _latestProducts; }
+            set { _latestProducts = value; }
+        }
     }
 }

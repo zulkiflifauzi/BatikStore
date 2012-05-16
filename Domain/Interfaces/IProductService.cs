@@ -19,5 +19,7 @@ namespace Domain.Interfaces
         ResponseMessage Update(Product entity);
         ResponseMessage Delete(int id);
         List<Product> GetRandomPromotedProducts();
+        List<Product> GetRandomProducts(bool promotedProducts);
+        List<Product> GetLatestProducts();
     }
 }

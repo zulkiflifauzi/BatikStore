@@ -26,6 +26,8 @@ namespace WebUI.Controllers
         {
             ViewModelCatalogue result = new ViewModelCatalogue();
             result.PromotedProducts.AddRange(Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.GetRandomPromotedProducts()));
+            result.RandomProducts.AddRange(Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.GetRandomProducts(false)));
+            result.LatestProducts.AddRange(Mapper.Map<List<Product>, List<ViewModelProduct>>(_productService.GetLatestProducts()));
             return View(result);
         }
 

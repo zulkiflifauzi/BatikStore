@@ -114,5 +114,25 @@ namespace Repository
                 return products.GetRandomFromList(Constant.PromotedProducts).ToList();
             }
         }
+
+
+        public List<Product> GetRandomProducts(bool includePromoted)
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                var products = db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").Where(c => c.Promoted == includePromoted).ToList();
+
+                return products.GetRandomFromList(Constant.RandomProducts).ToList();
+            }
+        }
+
+
+        public List<Product> GetLatestProducts()
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                return db.Products.Include("Model").Include("Size").Include("Type").Include("Origin").Include("Pictures").OrderByDescending(c => c.DateEntered).Take(Constant.LatestProducts).ToList();
+            }
+        }
     }
 }

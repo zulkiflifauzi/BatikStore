@@ -97,5 +97,15 @@ namespace Domain
         {
             return _productRepository.GetRandomPromotedProducts();
         }
+
+        public List<Product> GetRandomProducts(bool promotedProducts)
+        {
+            return _productRepository.GetRandomProducts(promotedProducts);
+        }
+
+        public List<Product> GetLatestProducts()
+        {
+            return _productRepository.GetLatestProducts();
+        }
     }
 }
