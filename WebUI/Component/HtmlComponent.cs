@@ -73,7 +73,7 @@ namespace WebUI.Component
             return MvcHtmlString.Create(anchorHtml);
         }
 
-        public static MvcHtmlString Products(this HtmlHelper html, List<ViewModelProduct> products, string className)
+        public static MvcHtmlString Products(this HtmlHelper html, List<ViewModelProduct> products, string className, string currencySymbol)
         {
             StringBuilder result = new StringBuilder();
 
@@ -83,17 +83,39 @@ namespace WebUI.Component
                 string url = item.Pictures.Count > 0 ? item.Pictures.FirstOrDefault().Url : "/Content/images/not-available.gif";
                 string description = item.Pictures.Count > 0 ? item.Pictures.FirstOrDefault().Description : "Picture is not available";
                 var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
-                string targetUrl = urlHelper.Action("Detail", "Product", new { id = item.Id });
+                string targetUrl = urlHelper.Action("Details", "Product", new { id = item.Id });
 
                 result.Append("<li>");
-                result.Append("<a class='");
+                result.Append("<a class='tiptip ");
                 result.Append(className);
                 result.Append("' target='_blank' href='");
                 result.Append(targetUrl);
                 result.Append("' title='");
-                result.Append(description);
+                result.Append(item.Description + ", " + GeneralLocalisations.Price + " " + currencySymbol + item.Price.ToString());
                 result.Append("'><img src='");
                 result.Append(url);
+                result.Append("' width='200' height='200'/></a>");
+                result.Append("</li>");
+            }
+            result.Append("</ul>");
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString ProductPictures(this HtmlHelper html, List<ViewModelPicture> pictures)
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.Append("<ul>");
+            foreach (var item in pictures)
+            {
+                result.Append("<li>");
+                result.Append("<a rel='lightbox[group]' href='");
+                result.Append(item.Url);
+                result.Append("' title='");
+                result.Append(item.Description);
+                result.Append("'><img src='");
+                result.Append(item.Url);
                 result.Append("' width='200' height='200'/></a>");
                 result.Append("</li>");
             }

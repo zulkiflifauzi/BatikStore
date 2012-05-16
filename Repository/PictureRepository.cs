@@ -8,7 +8,7 @@ namespace Repository
 {
     public class PictureRepository : IPictureRepository
     {
-        public List<Picture> GetPictureByProductId(int productId)
+        public List<Picture> GetPicturesByProductId(int productId)
         {
             using (var db = new BatikStoreEntities())
             {
@@ -33,12 +33,37 @@ namespace Repository
 
         public void Update(Picture entity)
         {
-            throw new NotImplementedException();
+            using (var db = new BatikStoreEntities())
+            {
+                var existing = db.Pictures.SingleOrDefault(c => c.Id == entity.Id);
+                if (existing != null)
+                {
+                    db.Pictures.ApplyCurrentValues(entity);
+                    db.SaveChanges();
+                }
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var db = new BatikStoreEntities())
+            {
+                var existing = db.Pictures.SingleOrDefault(c => c.Id == id);
+                if (existing != null)
+                {
+                    db.Pictures.DeleteObject(existing);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+
+        public Picture GetPictureById(int id)
+        {
+            using (var db = new BatikStoreEntities())
+            {
+                return db.Pictures.SingleOrDefault(c => c.Id == id);
+            }
         }
     }
 }

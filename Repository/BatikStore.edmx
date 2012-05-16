@@ -61,8 +61,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Number" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="Size_SizeId" Type="int" />
           <Property Name="Origin_OriginId" Type="int" />
           <Property Name="Type_TypeId" Type="int" />
@@ -223,8 +225,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Number" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Int32" Name="Size_SizeId" />
           <Property Type="Int32" Name="Origin_OriginId" />
           <Property Type="Int32" Name="Type_TypeId" />
@@ -354,8 +358,10 @@
                 <ScalarProperty Name="Type_TypeId" ColumnName="Type_TypeId" />
                 <ScalarProperty Name="Origin_OriginId" ColumnName="Origin_OriginId" />
                 <ScalarProperty Name="Size_SizeId" ColumnName="Size_SizeId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -386,28 +392,28 @@
         <EntityTypeShape EntityType="BatikStoreModel.Size" Width="1.5" PointX="0.75" PointY="7.25" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="BatikStoreModel.Type" Width="1.5" PointX="0.75" PointY="9.625" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="BatikStoreModel.Picture" Width="1.5" PointX="5.25" PointY="5.5" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="BatikStoreModel.Product" Width="1.5" PointX="3" PointY="4.625" Height="3.7109993489583317" />
+        <EntityTypeShape EntityType="BatikStoreModel.Product" Width="1.5" PointX="3" PointY="4.5" Height="4.0956022135416674" />
         <AssociationConnector Association="BatikStoreModel.FK_Product_Model" >
           <ConnectorPoint PointX="2.25" PointY="2.547841796875" />
           <ConnectorPoint PointX="3.75" PointY="2.547841796875" />
-          <ConnectorPoint PointX="3.75" PointY="4.625" />
+          <ConnectorPoint PointX="3.75" PointY="4.5" />
         </AssociationConnector>
         <AssociationConnector Association="BatikStoreModel.FK_Product_Origin" >
           <ConnectorPoint PointX="2.25" PointY="5.672841796875" />
           <ConnectorPoint PointX="3" PointY="5.672841796875" />
         </AssociationConnector>
         <AssociationConnector Association="BatikStoreModel.FK_Pictures_Products" >
-          <ConnectorPoint PointX="4.5" PointY="6.4901432291666659" />
-          <ConnectorPoint PointX="5.25" PointY="6.4901432291666659" />
+          <ConnectorPoint PointX="4.5" PointY="6.4901432291666667" />
+          <ConnectorPoint PointX="5.25" PointY="6.4901432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="BatikStoreModel.FK_Product_Size" >
-          <ConnectorPoint PointX="2.25" PointY="7.7929996744791659" />
-          <ConnectorPoint PointX="3" PointY="7.7929996744791659" />
+          <ConnectorPoint PointX="2.25" PointY="7.9228011067708337" />
+          <ConnectorPoint PointX="3" PointY="7.9228011067708337" />
         </AssociationConnector>
         <AssociationConnector Association="BatikStoreModel.FK_Product_Type" >
           <ConnectorPoint PointX="2.25" PointY="10.422841796875" />
           <ConnectorPoint PointX="3.75" PointY="10.422841796875" />
-          <ConnectorPoint PointX="3.75" PointY="8.3359993489583317" />
+          <ConnectorPoint PointX="3.75" PointY="8.5956022135416674" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

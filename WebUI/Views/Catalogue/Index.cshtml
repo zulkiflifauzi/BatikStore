@@ -10,6 +10,8 @@
 <script type="text/javascript">
     var model = @Html.Raw(Model.ToJSON());
     $(document).ready(function () {
+        $(".tiptip").tipTip({ maxWidth: "600px", edgeOffset: 10, keepAlive: false });        
+        $('.currency').formatCurrency({ symbol: "Rp" });
         if(model.PromotedProducts.length == 0)
             $("#batikPopuler").hide();
     });
@@ -24,16 +26,16 @@
     <div id="batikPopuler">        
         <h3>Batik Terpopuler</h3>
         <hr />
-        @Html.Products(Model.PromotedProducts, "promoted")
+        @Html.Products(Model.PromotedProducts, "promoted", "Rp")
     </div>
     <div id="batikKoleksi">        
         <h3>Batik Terbaru</h3>
         <hr />
-        @Html.Products(Model.LatestProducts, "latest")
+        @Html.Products(Model.LatestProducts, "latest", "Rp")
     </div>
     <div id="batikKoleksi">        
         <h3>Batik Koleksi</h3>
         <hr />
-        @Html.Products(Model.RandomProducts, "collection")
+        @Html.Products(Model.RandomProducts, "collection", "Rp")
     </div>
 </div>

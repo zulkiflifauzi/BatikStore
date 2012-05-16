@@ -1,0 +1,60 @@
+﻿@model WebUI.Models.ViewModelProduct
+@using WebUI.Component
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail Barang '@Model.Name'</h2>
+
+<div id="productContainer">
+    
+    <div style="float: left;width:200px;">
+        <div class="display-label">Nama</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="display-label">Nomer</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Number)
+        </div>
+
+        <div class="display-label">Deskripsi</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+
+        <div class="display-label">Harga</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Price)
+        </div>
+
+        <div class="display-label">Ukuran</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SizeName)
+        </div>
+
+        <div class="display-label">Model</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ModelName)
+        </div>
+
+        <div class="display-label">Tipe</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TypeName)
+        </div>
+
+        <div class="display-label">Asal</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.OriginName)
+        </div>
+    </div>
+    <div id ='productPictures' style="width:100%">
+        @Html.ProductPictures(Model.Pictures)
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Kembali ke Halaman Depan", "Index", "Catalogue")
+</p>

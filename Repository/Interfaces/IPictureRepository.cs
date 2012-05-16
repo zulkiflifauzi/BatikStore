@@ -7,6 +7,7 @@ namespace Repository.Interfaces
 {
     public interface IPictureRepository : ICRUDRepository<Picture>
     {
-        List<Picture> GetPictureByProductId(int productId);
+        List<Picture> GetPicturesByProductId(int productId);
+        Picture GetPictureById(int id);
     }
 }

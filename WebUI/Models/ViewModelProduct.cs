@@ -13,9 +13,14 @@ namespace WebUI.Models
         public int Id { get; set; }
 
         [Required]
+        public string Name { get; set; }
+
+        [Required]
         public string Number { get; set; }
 
         public string Description { get; set; }
+
+        public decimal Price { get; set; }
 
         [DisplayName("Size")]
         public Nullable<int> Size_SizeId { get; set; }

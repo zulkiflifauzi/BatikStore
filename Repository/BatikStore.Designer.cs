@@ -627,14 +627,18 @@ namespace Repository
         /// Create a new Product object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
         /// <param name="number">Initial value of the Number property.</param>
+        /// <param name="price">Initial value of the Price property.</param>
         /// <param name="promoted">Initial value of the Promoted property.</param>
         /// <param name="dateEntered">Initial value of the DateEntered property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String number, global::System.Boolean promoted, global::System.DateTime dateEntered)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String number, global::System.Decimal price, global::System.Boolean promoted, global::System.DateTime dateEntered)
         {
             Product product = new Product();
             product.Id = id;
+            product.Name = name;
             product.Number = number;
+            product.Price = price;
             product.Promoted = promoted;
             product.DateEntered = dateEntered;
             return product;
@@ -669,6 +673,30 @@ namespace Repository
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -717,6 +745,30 @@ namespace Repository
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private global::System.Decimal _Price;
+        partial void OnPriceChanging(global::System.Decimal value);
+        partial void OnPriceChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

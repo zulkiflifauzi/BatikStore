@@ -6,11 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="@Url.Content("~/Scripts/jquery.tipTip.js")" type="text/javascript"></script>
-<link href="@Url.Content("~/Content/tipTip.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".tiptip").tipTip({ maxWidth: "600px", edgeOffset: 10, keepAlive: true });
+        $(".tiptip").tipTip({ maxWidth: "600px", edgeOffset: 10, keepAlive: false });
+        $('.currency').formatCurrency({ symbol: "Rp" });
     });
 </script>
 <div>
@@ -20,10 +19,16 @@
 <table>
     <tr>
         <th>
+            Name
+        </th>
+        <th>
             Number
         </th>
         <th>
             Description
+        </th>
+        <th>
+            Price
         </th>
         <th>
             Size
@@ -51,10 +56,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Number)
         </td>
         <td>
             @Html.TipTip(item.Description)
+        </td>
+        <td class="currency">
+            @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SizeName)

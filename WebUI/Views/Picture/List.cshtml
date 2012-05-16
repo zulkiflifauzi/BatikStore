@@ -7,10 +7,12 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.lightbox').lightBox({ fixedNavigation: true });
+        $('a').smoothScroll({
+            speed: 1000,
+            easing: 'easeInOutCubic'
+        }); 
     });
 </script>
-
 <div>
     <div style="float:right">@Html.ActionLink("Create New", "Create", new { id = ViewBag.ProductId })</div>
      <div><h2>Pictures for Product number @ViewBag.ProductNumber</h2></div>
@@ -31,8 +33,8 @@
 @foreach (var item in Model)
 {
     <tr>
-        <td>
-            <a class="lightbox" href="@Html.DisplayFor(modelItem => item.Url)"><img src="@Html.DisplayFor(modelItem => item.Url)" width="72" height="72" alt="" /></a>
+        <td class="pictureImage">
+            <a rel="lightbox" href="@Html.DisplayFor(modelItem => item.Url)" title="@Html.DisplayFor(modelItem => item.Description)"><img src="@Html.DisplayFor(modelItem => item.Url)" width="72" height="72" alt="" /></a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

@@ -106,6 +106,12 @@ namespace WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int id)
+        {
+            var product = Mapper.Map<Product, ViewModelProduct>(_productService.GetById(id));
+            return View(product);
+        }
+
         public void PrepareSelectList()
         {
             List<SelectListItem> sizeList = new List<SelectListItem>();
