@@ -109,38 +109,6 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Size> Sizes
-        {
-            get
-            {
-                if ((_Sizes == null))
-                {
-                    _Sizes = base.CreateObjectSet<Size>("Sizes");
-                }
-                return _Sizes;
-            }
-        }
-        private ObjectSet<Size> _Sizes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Type> Types
-        {
-            get
-            {
-                if ((_Types == null))
-                {
-                    _Types = base.CreateObjectSet<Type>("Types");
-                }
-                return _Types;
-            }
-        }
-        private ObjectSet<Type> _Types;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Picture> Pictures
         {
             get
@@ -169,6 +137,38 @@ namespace Repository
             }
         }
         private ObjectSet<Product> _Products;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Size> Sizes
+        {
+            get
+            {
+                if ((_Sizes == null))
+                {
+                    _Sizes = base.CreateObjectSet<Size>("Sizes");
+                }
+                return _Sizes;
+            }
+        }
+        private ObjectSet<Size> _Sizes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Type> Types
+        {
+            get
+            {
+                if ((_Types == null))
+                {
+                    _Types = base.CreateObjectSet<Type>("Types");
+                }
+                return _Types;
+            }
+        }
+        private ObjectSet<Type> _Types;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -206,22 +206,6 @@ namespace Repository
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Sizes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToSizes(Size size)
-        {
-            base.AddObject("Sizes", size);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Types EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToTypes(Type type)
-        {
-            base.AddObject("Types", type);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Pictures EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToPictures(Picture picture)
@@ -235,6 +219,22 @@ namespace Repository
         public void AddToProducts(Product product)
         {
             base.AddObject("Products", product);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Sizes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSizes(Size size)
+        {
+            base.AddObject("Sizes", size);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Types EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTypes(Type type)
+        {
+            base.AddObject("Types", type);
         }
     
         /// <summary>
